@@ -20,12 +20,12 @@
 use strict;
 use Expect;
 
-chdir('/SAN/bioinf/bioserv/tmp/NewPredServer/') or die "$!";
+#chdir('/SAN/bioinf/bioserv/tmp/NewPredServer/') or die "$!";
 
 my $file = $ARGV[0];
 
 #print $file."\n";
-my $command = "/webdata/binaries/current/hs_pred/clean.ex";
+my $command = "./bin/clean.ex";
 my @params = [];
 my $exp = Expect->spawn($command, @params) or die "Cannot spawn $command: $!\n";
 #print $exp "zug\n";

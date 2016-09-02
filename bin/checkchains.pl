@@ -7,6 +7,7 @@ use Data::Dumper;
 
 my $file = $ARGV[0];
 my $chains = $ARGV[1];
+my $charmm = $ARGV[2];
 
 my $aChains = [];
 
@@ -108,14 +109,14 @@ else
 		print "HSPred can not process NMR ensembles, please submit a pdb file containing a single structure.";
 		print "\n";
 	}
-	
+
 	exit(80);
 }
 
 
 sub read_charmm19
 {
-	my $fhIn = new FileHandle("/webdata/binaries/current/hs_pred/charmm19_ha.aaa","r");
+	my $fhIn = new FileHandle($charmm,"r");
 	#my $fhIn = new FileHandle("/cs/research/bioinf/home1/green/dbuchan/charmm19_ha.aaa","r");
 
 	my $hData = {};
