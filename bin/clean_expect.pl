@@ -19,13 +19,13 @@
 
 use strict;
 use Expect;
-
+use FindBin;
 #chdir('/SAN/bioinf/bioserv/tmp/NewPredServer/') or die "$!";
 
 my $file = $ARGV[0];
 
 #print $file."\n";
-my $command = "./bin/clean.ex";
+my $command = "$FindBin::Bin/clean.ex";
 my @params = [];
 my $exp = Expect->spawn($command, @params) or die "Cannot spawn $command: $!\n";
 #print $exp "zug\n";

@@ -4,7 +4,7 @@ use FileHandle;
 use strict;
 use English;
 use Data::Dumper;
-
+# exit(0);
 my $file = $ARGV[0];
 my $chains = $ARGV[1];
 my $charmm = $ARGV[2];
@@ -34,6 +34,7 @@ my $fhInput = new FileHandle($file, "r");
 
 my $tmp_pdb = $file;
 $tmp_pdb =~ s/\.pdb$/.tmp/;
+$tmp_pdb =~ s/\.input$/.tmp/;
 print $tmp_pdb."\n";
 my $fhOut = new FileHandle($tmp_pdb,"w");
 
