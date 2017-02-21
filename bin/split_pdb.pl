@@ -14,8 +14,20 @@ my $id = $ARGV[0];
 my $chainsA = $ARGV[1];
 my $chainsB = $ARGV[2];
 my $tmpDir = $ARGV[3];
+my $pdb = '';
+if(-e $tmpDir."/".$id.".pdb")
+{
+	$pdb = $tmpDir."/".$id.".pdb";
+}
+elsif(-e $tmpDir."/".$id.".input")
+{
+	$pdb = $tmpDir."/".$id.".input";
+}
+else
+{
+	die "can not find pdb file";
+}
 
-my $pdb = $tmpDir."/".$id.".pdb";
 my $hspred = $tmpDir."/".$id."_hs-pred.out";
 my $output_1 = $tmpDir."/".$id."_initial.pdb";
 my $output_2 = $tmpDir."/".$id."_second.pdb";
@@ -43,10 +55,10 @@ while(my $line = $fHspred->getline)
 	@$aEntries = split /\s+/, $line;
 	@$aEntries[2] =~ s/^-.+/0.000/;
 	@$aEntries[2] =~ s/^(.{4})./ $1/;
-	
+
 	$hHspred->{@$aEntries[0]}{RESIDUE} = @$aEntries[1];
 	$hHspred->{@$aEntries[0]}{SCORE} = @$aEntries[2];
-	
+
 }
 #print Dumper $hHspred;
 $fHspred->close;
@@ -65,7 +77,7 @@ while(my $line = $fhPDB->getline)
 	if($line =~ /^ATOM.{17}(.)\s*(\d+)/)
 	{
 		my $chain = $1;
-		my $res = $2;		
+		my $res = $2;
 		if(exists $hChainsA->{$chain})
 		{
 			if(exists $hHspred->{$chain.$res})
@@ -189,7 +201,7 @@ while(my $line = $fhPDB->getline)
 			}
 			print $fhOutput2 $line;
 		}
-		
+
 	}
 	if($line =~ /^HETATM.{15}(.)/)
 	{
@@ -204,14 +216,14 @@ while(my $line = $fhPDB->getline)
 			print $fhOutput2 $line;
 		}
 	}
-	
+
 	if($line =~ /^END/)
 	{
 		print $fhOutput1 $line;
 		print $fhOutput2 $line;
 		$end_found++;
 	}
-	
+
 }
 
 if($end_found == 0)
