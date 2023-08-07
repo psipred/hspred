@@ -23,7 +23,7 @@ use FindBin;
 #chdir('/SAN/bioinf/bioserv/tmp/NewPredServer/') or die "$!";
 
 my $file = $ARGV[0];
-
+symlink($ARGV[1], "./resdefs.dat");
 #print $file."\n";
 my $command = "$FindBin::Bin/clean.ex";
 my @params = [];

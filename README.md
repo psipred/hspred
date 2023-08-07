@@ -17,9 +17,9 @@ If it is happy your chains are present proceed to
 the next step
 
 2)
-Run cleanexpect
+Run cleanexpect, pass the location of the resdefs.dat
 
-`> ./bin/clean_expect.pl 1IAR.pdb`
+`> ./bin/clean_expect.pl 1IAR.pdb ./data/resdefs.dat`
 
 This will produce a file 1IAR.new
 
