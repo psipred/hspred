@@ -1,7 +1,7 @@
 # Prerequsites
 
 1. Install perl Expect.pm
-2. clean.ex and hbplus are provided in the bin/ dir if you find they will not run you can get the source files from the Thornton group at the EBI.
+2. clean.ex and hbplus are provided in the bin/ dir if you find they will not run you can get the source files from the EBI. Clean is part of the procheck suite (https://www.ebi.ac.uk/thornton-srv/software/PROCHECK/) and hbplus can be downloaded via (https://www.ebi.ac.uk/thornton-srv/software/HBPLUS/install.html) 
 3. svm_classify from svm_light may need recompiled (in data/)
 
 # Example use
