@@ -39,3 +39,5 @@ else
 	  print "hmm...";
 }
  $exp->soft_close();
+
+ unlink("./resdefs.dat") or die "Can't unlink resdefs.dat $!";
