@@ -1,4 +1,26 @@
-# Prerequsites
+# Ansible Installation
+
+First ensure that ansible is installed on your system, then clone the github
+repo
+
+``` bash
+% pip install ansible
+% git clone https://github.com/psipred/hspred.git
+% cd ./hspred/ansible_installer
+```
+
+Next edit the the config_vars.yml to reflect where you would like hspred.
+
+You can now run ansible as per:
+
+``` bash
+% ansible-playbook -i hosts install.yml
+```
+
+You can edit the hosts file to install hspred on one or more machines.
+ 
+ 
+ # Prerequsites
 
 1. Install perl Expect.pm
 2. clean.ex and hbplus are provided in the bin/ dir if you find they will not run you can get the source files from the EBI. Clean is part of the procheck suite (https://www.ebi.ac.uk/thornton-srv/software/PROCHECK/) and hbplus can be downloaded via (https://www.ebi.ac.uk/thornton-srv/software/HBPLUS/install.html). You need the resdefs.dat file in the data dir
