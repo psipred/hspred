@@ -1,0 +1,24 @@
+  - name: Check hspred is present
+    stat: path={{ app_location }}/hspred
+    register: hspred_exist
+
+  - name : Check out hspred from GIT
+    when: hspred_exist.stat.exists == False
+    git:
+      repo: https://github.com/psipred/hspred.git
+      dest: "{{ app_location }}/hspred"
+      clone: yes
+      force: yes
+
+  # - name: Install Expect
+  #   become_user: root
+  #   become_method: sudo
+  #   cpanm:
+  #     name: Expect
+  #     mirror: http://cpan.mirror.triple-it.nl/
+
+  - name: install Expect
+    become_user: root
+    become_method: sudo
+    become: true
+    shell: "/usr/local/bin/cpanm Expect"

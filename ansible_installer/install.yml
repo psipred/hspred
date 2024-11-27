@@ -1,0 +1,6 @@
+- name: Install hspred
+  hosts: all
+  roles:
+    - hspred
+  vars_files:
+   - ./config_vars.yml
